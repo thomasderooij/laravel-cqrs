@@ -1,0 +1,27 @@
+{
+  "name": "thomasderooij/laravel-cqrs",
+  "type": "project",
+  "description": "A laravel CQRS class setup.",
+  "keywords": [
+    "cqrs",
+    "laravel"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^8.1",
+    "laravel/laravel": "^8|^9",
+    "thomasderooij/cqrs": "^1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Thomasderooij\\LaravelCqrs\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
