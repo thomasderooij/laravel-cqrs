@@ -24,8 +24,8 @@ The traits canCommand and canQuery set up a class to run your commands and queri
 
 Quick example:
 You have a command called StoreFileCommand. It takes a file location from your request as a constructor argument.
-* The run function actually moves is to a dedicated directory, and makes a database entry so you can get your file later on.
+* The run function actually moves it to a dedicated directory, and makes a database entry so you can get your file later on.
 * The isSatisfied function checks the file extension, size and other limitations you might want to put on your files.
-* The Exception function returns a new FileToBig exception to throw when the file is too big.
+* The Exception function returns a new FileTooBig exception to throw when the file is too big.
 
 Your controller says $this->execute(new StoreFileCommand($fileLocation)); and bam. File is stored. Clean, reusable. Lovely.
