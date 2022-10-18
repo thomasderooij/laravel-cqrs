@@ -28,4 +28,4 @@ You have a command called StoreFileCommand. It takes a file location from your r
 * The isSatisfied function checks the file extension, size and other limitations you might want to put on your files.
 * The Exception function returns a new FileTooBig exception to throw when the file is too big.
 
-Your controller says $this->execute(new StoreFileCommand($fileLocation)); and bam. File is stored. Clean, reusable. Lovely.
+Your controller says $this->execute(new StoreFileCommand($fileLocation, $targetLocation)); and bam. File is stored. Clean, reusable. Lovely.
