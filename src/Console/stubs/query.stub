@@ -1,0 +1,24 @@
+<?php
+
+namespace {queryNamespace};
+
+use Thomasderooij\LaravelCqrs\Queries\Query;
+use Throwable;
+
+class {queryClassName} extends Query
+{
+    protected function run(): mixed
+    {
+        // TODO: Implement run() method.
+    }
+
+    protected function isSatisfied(): bool
+    {
+        return false;
+    }
+
+    protected function exception(): Throwable
+    {
+        // TODO: Implement exception() method.
+    }
+}
