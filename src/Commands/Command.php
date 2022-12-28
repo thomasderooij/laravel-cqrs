@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Thomasderooij\LaravelCqrs\Commands;
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User;
 use Thomasderooij\Cqrs\Commands\Command as BaseCommand;
 use Thomasderooij\LaravelCqrs\Traits\Transactions;
 
