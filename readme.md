@@ -55,5 +55,6 @@ This will create a command for you. Per default this will be in the app/Cqrs/Que
 
 ## Configuration
 
-
+To change the directory in which you want to create your command and queries, simply publish the assets of the CqrsServiceProvider
+and add your custom directory in config/cqrs.php
 
