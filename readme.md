@@ -8,6 +8,13 @@ Require this package with composer using the following command:
 composer require thomasderooij/laravel-cqrs
 ```
 
+The package will automaticall register the required service providers.
+
+Optionally, publish the packages config by running
+```bash
+php artisan vendor:publish --provider="Thomasderooij\LaravelCqrs\Providers\CqrsServiceProvider"
+```
+
 ## Docs
 It's a set of classes to create a clear distinction between commands, or things that write and do stuff,
 and queries, things that fetch you information.
@@ -29,3 +36,24 @@ You have a command called StoreFileCommand. It takes a file location from your r
 * The Exception function returns a new FileTooBig exception to throw when the file is too big.
 
 Your controller says $this->execute(new StoreFileCommand($fileLocation, $targetLocation)); and bam. File is stored. Clean, reusable. Lovely.
+
+
+## Commands
+
+```bash
+php artisan cqrs:command <Class name goes here>
+```
+
+This will create a command for you. Per default this will be in the app/Cqrs/Commands directory.
+
+
+```bash
+php artisan cqrs:query <Class name goes here>
+```
+
+This will create a command for you. Per default this will be in the app/Cqrs/Queries directory.
+
+## Configuration
+
+
+

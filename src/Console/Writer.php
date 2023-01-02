@@ -13,7 +13,7 @@ trait Writer
 
         $dir = implode( '/', $parts);
         if (!$this->files->exists(app_path($dir))) {
-            $this->files->makeDirectory(app_path($dir), 755, true);
+            $this->files->makeDirectory(app_path($dir), 0755, true);
         }
 
         $content = $this->files->get($stub);

@@ -2,9 +2,9 @@
 
 return [
     'command' => [
-        'directory' => 'Cqrs/Commands',
+        'directory' => env('CQRS_COMMAND_DIRECTORY', 'Cqrs/Commands'),
     ],
     'query' => [
-        'directory' => 'Cqrs/Queries',
+        'directory' => env('CQRS_QUERY_DIRECTORY', 'Cqrs/Queries'),
     ],
 ];
