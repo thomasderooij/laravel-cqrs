@@ -27,11 +27,13 @@ class CreateCommandCommand extends Command
     public function handle(): void
     {
         $this->writeToFile(
-            $this->getDirectory() . '/'  . $this->argument('class'),
+            $file = $this->getDirectory() . '/'  . $this->argument('class') . '.php',
             $this->getStub(), [
             $this->getCommandNamespacePlaceholder() => $this->getCommandNamespace(),
             $this->getCommandClassNamePlaceholder() => $this->getCommandClassName(),
         ]);
+
+        $this->components->info(sprintf('Cqrs command [%s] created successfully.', app_path($file)));
     }
 
     protected function getDirectory(): string

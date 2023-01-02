@@ -9,7 +9,7 @@ trait Writer
     public function writeToFile(string $filename, string $stub, array $placeholderData): void
     {
         $parts = explode('/', $filename);
-        $classname = array_pop($parts);
+        array_pop($parts);
 
         $dir = implode( '/', $parts);
         if (!$this->files->exists(app_path($dir))) {
@@ -21,7 +21,6 @@ trait Writer
             $content = str_replace($key, $value, $content);
         }
 
-        $location = app_path($dir) . '/' . $classname . '.php';
-        $this->files->put($location, $content);
+        $this->files->put(app_path($filename), $content);
     }
 }
