@@ -26,22 +26,44 @@ class CreateQueryCommand extends Command
 
     public function handle(): void
     {
-        $this->writeToFile(config('cqrs.query.directory'), __DIR__ . '/stubs/query.stub', [
-            'queryNamespace' => $this->getQueryNamespace(),
-            'queryClassName' => $this->getQueryClassName(),
+        $this->writeToFile(
+            $this->getDirectory() . '/' . $this->argument('class'),
+            $this->getStub(), [
+            $this->getQueryNamespacePlaceholder() => $this->getQueryNamespace(),
+            $this->getQueryClassNamePlaceholder() => $this->getQueryClassName(),
         ]);
     }
 
-    private function getQueryNamespace(): string
+    protected function getDirectory(): string
     {
-        return config('app.namespace', 'App') . str_replace(
+        return config('cqrs.query.directory');
+    }
+
+    protected function getStub(): string
+    {
+        return __DIR__ . '/stubs/query.stub';
+    }
+
+    protected function getQueryNamespacePlaceholder(): string
+    {
+        return '{commandNamespace}';
+    }
+
+    protected function getQueryNamespace(): string
+    {
+        return config('app.namespace', 'App\\') . str_replace(
             "/",
             "\\",
             config('cqrs.query.directory')
         );
     }
 
-    private function getQueryClassName(): string
+    protected function getQueryClassNamePlaceholder(): string
+    {
+        return '{commandClassName}';
+    }
+
+    protected function getQueryClassName(): string
     {
         return $this->argument('class');
     }

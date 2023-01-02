@@ -26,22 +26,44 @@ class CreateCommandCommand extends Command
 
     public function handle(): void
     {
-        $this->writeToFile(config('cqrs.command.directory'), __DIR__ . '/stubs/command.stub', [
-            'commandNamespace' => $this->getCommandNamespace(),
-            'commandClassName' => $this->getCommandClassName(),
+        $this->writeToFile(
+            $this->getDirectory() . '/'  . $this->argument('class'),
+            $this->getStub(), [
+            $this->getCommandNamespacePlaceholder() => $this->getCommandNamespace(),
+            $this->getCommandClassNamePlaceholder() => $this->getCommandClassName(),
         ]);
     }
 
-    private function getCommandNamespace(): string
+    protected function getDirectory(): string
     {
-        return config('app.namespace', 'App') . str_replace(
+        return config('cqrs.command.directory');
+    }
+
+    protected function getStub(): string
+    {
+        return __DIR__ . '/stubs/command.stub';
+    }
+
+    protected function getCommandNamespacePlaceholder(): string
+    {
+        return '{commandNamespace}';
+    }
+
+    protected function getCommandNamespace(): string
+    {
+        return config('app.namespace', 'App\\') . str_replace(
                 "/",
                 "\\",
                 config('cqrs.command.directory')
             );
     }
 
-    private function getCommandClassName(): string
+    protected function getCommandClassNamePlaceholder(): string
+    {
+        return '{commandClassName}';
+    }
+
+    protected function getCommandClassName(): string
     {
         return $this->argument('class');
     }
